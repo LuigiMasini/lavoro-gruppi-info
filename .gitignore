@@ -1,4 +1,4 @@
-*.out
+a.out
 *.x
 *.exe
 *.o
