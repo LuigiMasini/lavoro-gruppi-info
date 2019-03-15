@@ -49,7 +49,7 @@ int menu(){
 			bonus();
 			break;
 			
-		case 7: printf("\n*Programmatori: Masini Luigi, Negro Federico\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
+		case 7: printf("\n*Programmatori: Luigi Masini, Federico Negro\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
 			break;
 			
 		default: printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni, sopra riportati");
