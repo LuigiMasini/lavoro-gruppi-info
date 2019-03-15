@@ -1,49 +1,67 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int menu(void);
+void menu(void);
 int bonus(void);
 
+void quad(int);
+void quad_meta(int);
+void rett(int, int);
+void tri_eq(int);
+void tri_ret(int);
+
+int lat, al;
+
+void lato(bool tipo){
+	if(tipo){ //rettangolo
+		printf("Inserisci la base e la cazzo di altezza:\t");
+		scanf("%d %d", &lat, &al);
+	}
+	else{ //figure
+		printf("inserisci il porco demonio di lato:\t");
+		scanf("%d", &lat);
+	}
+	printf("\n\n");
+}
 
 int main(){
 	//scritte principali che non verranno mai ripetute
+	printf("Salve Utente,\n"
+	"Questo programma permette di creare una figura tra quelle proposte, e di personalizzarla modificandone proporzioni o colore.\n\n");
 	menu();
 }
 
 
 /*TODO
- - reinserimento opzione menu a modo mio
- * ordine
- - recursione menù invece di iterazione
- * pulire e ordinare input e output (dispersivo, acapo acaso, troppi)
  * voce 7 necessaria?
  * controllo inserimanto numeri in funzione
- * printf riga 29, english is better
- - non funziona menù 6
  * si potrebbe usare enum per le opzioni
  *
  */
 
-int menu(){
+void menu(){
 	int opz;
 	
-	printf("Salve Utente,\n"
-	"Questo programma permette di creare una figura tra quelle proposte, e di personalizzarla modificandone proporzioni o colore.\n\n"
-	"Ecco le opzioni:\n\n"
-	"F1 F2 F3 F4 F5 menu bonus(6) credits(7)\n\n"
-	"Inserire il numero dell'opzione desiderata");
+	printf("Funzioni programma:\n\n"
+	"1)quadrato\t\t2)triangolo equilatero\t3)triangolo rettangolo\n4)rettangolo vuoto\t5)mezzo quadrato\t6)menu bonus\t7)credits\n\n"
+	"Scegli l'opzione:\t");
 	scanf("%d",&opz);
 	switch (opz){
 		case 0: exit(0);//o return, è la stessa cosa in questo caso
-		case 1:
+		case 1:lato(0);
+			quad(lat);
 			break;
-		case 2:
+		case 2:lato(0);
+			tri_eq(lat);
 			break;
-		case 3:
+		case 3:lato(0);
+			tri_ret(lat);
 			break;
-		case 4:
+		case 4:lato(1);
+			rett(lat, al);
 			break;
-		case 5:
+		case 5:lato(0);
+			quad_meta(lat);
 			break;
 		case 6: printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
 			bonus();
@@ -54,7 +72,7 @@ int menu(){
 			
 		default: printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni, sopra riportati");
 	}
-	printf("\n\n\n\n");
+	printf("\n\n\n");
 	menu();
 }
 
@@ -76,3 +94,62 @@ int bonus(){
 	}
 	bonus();
 }
+
+//BEGIN figure
+
+void quad(int l){
+	for(int i=0; i<l; i++){
+		for(int j=0; j<l; j++)
+			printf("* ");
+		putchar('\n');
+	}
+}
+
+void quad_meta(int l){
+	for(int i=0; i<l; i++){
+		for(int j=i+1;j;j--)
+			printf("* ");
+		for(int j=i; j<l; j++)
+			printf("- ");
+		putchar('\n');
+	}
+}
+
+void rett(int base, int altezza){
+	int c, cont;
+	base-=2;
+	c=altezza;
+	for(;altezza>0;altezza--){
+		printf("* ");
+		cont=base;
+		for(;cont>0;cont--){
+			if(altezza==1||altezza==c)
+				printf("* ");
+			else
+				printf("  ");
+		}
+		printf("*\n");
+	}
+}
+
+
+void tri_eq(int l){
+	for(int i=0; i<l; i++){
+		int j;
+		for(j=i; j<l; j++)
+			printf(" ");
+		for(j=i+1;j;j--)
+			printf("* ");
+		putchar('\n');
+	}
+}
+
+
+void tri_ret(int l){
+	for(int i=0; i<l; i++){
+		for(int j=i+1;j;j--)
+			printf("* ");
+		putchar('\n');
+	}
+}
+//END figure
