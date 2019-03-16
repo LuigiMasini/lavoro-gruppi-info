@@ -13,13 +13,21 @@ void tri_ret(int);
 int lat, al;
 
 void lato(bool tipo){
+	int wrong=0;
+	char c;
 	if(tipo){ //rettangolo
 		printf("Inserisci la base e la cazzo di altezza:\t");
 		scanf("%d %d", &lat, &al);
 	}
 	else{ //figure
-		printf("inserisci il porco demonio di lato:\t");
-		scanf("%d", &lat);
+		do{
+			if(wrong)
+				printf("NAN");
+			printf("inserisci il porco demonio di lato:\t");
+			scanf("%s", &c);
+		}
+		while(c<48 || c>57 && ++wrong);
+		lat=c-48;
 	}
 	printf("\n\n");
 }
