@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void menu(void);
 int bonus(void);
@@ -14,10 +15,24 @@ int lat, al;
 
 void lato(bool tipo){
 	int wrong=0;
-	char c;
+	char c, a;
 	if(tipo){ //rettangolo
-		printf("Inserisci la base e la cazzo di altezza:\t");
-		scanf("%d %d", &lat, &al);
+		do {
+			if(wrong)
+				printf("NAN");
+			printf("Inserisci la base\t");
+			scanf("%s", &c);
+		}
+		while (c<48 || c>57 && ++wrong);
+		lat=c-48;
+		do {
+			if(wrong)
+				printf("NAN");
+			printf("Inserisci la cazzo di altezza:\t");
+			scanf("%s", &a);
+		}
+		while (a<48 || a>57 && ++wrong);
+		al=a-48;
 	}
 	else{ //figure
 		do{
@@ -48,54 +63,54 @@ int main(){
  */
 
 void menu(){
-	int opz;
-	
+	char opz;
 	printf("Funzioni programma:\n\n"
 	"1)quadrato\t\t2)triangolo equilatero\t3)triangolo rettangolo\n4)rettangolo vuoto\t5)mezzo quadrato\t6)menu bonus\t7)credits\n\n"
 	"Scegli l'opzione:\t");
-	scanf("%d",&opz);
+	scanf("%s",&opz);
 	switch (opz){
-		case 0: exit(0);//o return, è la stessa cosa in questo caso
-		case 1:lato(0);
+		case '0': exit(0);//o return, è la stessa cosa in questo caso
+		case '1':lato(0);
 			quad(lat);
 			break;
-		case 2:lato(0);
+		case '2':lato(0);
 			tri_eq(lat);
 			break;
-		case 3:lato(0);
+		case '3':lato(0);
 			tri_ret(lat);
 			break;
-		case 4:lato(1);
+		case '4':lato(1);
 			rett(lat, al);
 			break;
-		case 5:lato(0);
+		case '5':lato(0);
 			quad_meta(lat);
 			break;
-		case 6: printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
+		case '6': printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
 			bonus();
 			break;
 			
-		case 7: printf("\n*Programmatori: Luigi Masini, Federico Negro\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
+		case '7': printf("\n*Programmatori: Luigi Masini, Federico Negro\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
 			break;
 			
-		default: printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni, sopra riportati");
+		default: printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni");
 	}
 	printf("\n\n\n");
+// 	system("clear");
 	menu();
 }
 
 
 int bonus(){
-	int opzb;
+	char opzb;
 	printf("Selezionare un opzione: OPZ1 OPZ2 ECC.. MENU BASE3");
-	scanf("%d",&opzb);
+	scanf("%s",&opzb);
 	switch (opzb){
-		case 0: exit(0);
-		case 1:
+		case '0': exit(0);
+		case '1':
 			break;
-		case 2:
+		case '2':
 			break;
-		case 3: printf("-nothing strange here");	//torna a menù
+		case '3': printf("-nothing strange here");	//torna a menù
 			return 0;
 			break;
 		default:printf("\ninserire un opzione valida");
