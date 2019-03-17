@@ -65,7 +65,7 @@ int main(){
 void menu(){
 	char opz;
 	printf("Funzioni programma:\n\n"
-	"1)quadrato\t\t2)triangolo equilatero\t3)triangolo rettangolo\n4)rettangolo vuoto\t5)mezzo quadrato\t6)menu bonus\t7)credits\n\n"
+	"1)quadrato\t\t2)triangolo equilatero\n3)triangolo rettangolo\t4)rettangolo vuoto\n5)mezzo quadrato\t6)menu bonus\n7)credits\t\t0)uscire\n\n"
 	"Scegli l'opzione:\t");
 	scanf("%s",&opz);
 	switch (opz){
@@ -85,7 +85,8 @@ void menu(){
 		case '5':lato(0);
 			quad_meta(lat);
 			break;
-		case '6': printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
+		case '6':system("clear");
+			printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
 			bonus();
 			break;
 			
@@ -112,7 +113,6 @@ int bonus(){
 			break;
 		case '3': printf("-nothing strange here");	//torna a menù
 			return 0;
-			break;
 		default:printf("\ninserire un opzione valida");
 	}
 	bonus();
