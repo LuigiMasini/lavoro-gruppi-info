@@ -51,17 +51,21 @@ int main(int argc, char *argv[])
 
     result = FMOD_System_Init(system, 1, FMOD_INIT_NORMAL, NULL);
     ERRCHECK(result);
+    
+    //originale
+//     char *suono = "../media/wave.mp3";
+    char *suono = argv[1];
 
-    result = FMOD_System_CreateSound(system, "../media/wave.mp3", FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &sound);
+    result = FMOD_System_CreateSound(system, suono, FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &sound);
     ERRCHECK(result);
-
+/*
     printf("====================================================================\n");
     printf("PlayStream Example.  Copyright (c) Firelight Technologies 2004-2016.\n");
     printf("====================================================================\n");
     printf("\n");
     printf("Press space to pause, Esc to quit\n");
     printf("\n");
-
+*/
     /*
         Play the sound.
     */
@@ -123,7 +127,7 @@ int main(int argc, char *argv[])
                 ERRCHECK(result);
             }
 
-            printf("Time %02d:%02d:%02d/%02d:%02d:%02d : %s\r", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100, lenms / 1000 / 60, lenms / 1000 % 60, lenms / 10 % 100, paused ? "Paused " : playing ? "Playing" : "Stopped");
+//             printf("Time %02d:%02d:%02d/%02d:%02d:%02d : %s\r", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100, lenms / 1000 / 60, lenms / 1000 % 60, lenms / 10 % 100, paused ? "Paused " : playing ? "Playing" : "Stopped");
             fflush(stdout);
         }
 
