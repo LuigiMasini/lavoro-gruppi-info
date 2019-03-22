@@ -5,10 +5,10 @@
 # 	g++ -O2 -m64 -o example $< ../../api/lib/libfmodex64.so
 
 x86_c: playstream.c
-	g++ -O2 -m32 -o play $< ../../api/lib/libfmodex.so
+	g++ -O2 -m32 -o linux_play $< lib/libfmodex.so
 
 x64_c: playstream.c
-	g++ -O2 -m64 -o play $< ../../api/lib/libfmodex64.so
+	g++ -O2 -m64 -o linux_play $< lib/libfmodex64.so
 
 clean:
-	rm -f example
+	rm -f linux_play

@@ -8,9 +8,9 @@
  This makes FMOD decode the file in realtime as it plays, instead of loading it all at once.
  This uses far less memory, in exchange for a small runtime cpu hit.
 ===============================================================================================*/
-#include "../../api/inc/fmod.h"
-#include "../../api/inc/fmod_errors.h"
-#include "../common/wincompat.h"
+#include "inc/fmod.h"
+#include "inc/fmod_errors.h"
+#include "inc/wincompat.h"
 #include <stdio.h>
 
 
@@ -127,8 +127,10 @@ int main(int argc, char *argv[])
                 ERRCHECK(result);
             }
 
-//             printf("Time %02d:%02d:%02d/%02d:%02d:%02d : %s\r", ms / 1000 / 60, ms / 1000 % 60, ms / 10 % 100, lenms / 1000 / 60, lenms / 1000 % 60, lenms / 10 % 100, paused ? "Paused " : playing ? "Playing" : "Stopped");
+//              printf("Time %02d:%02d:%02d/%02d:%02d:%02d : %s\r", ms / 1000 / 60,	ms / 1000 % 60, 	ms / 10 % 100,  	lenms / 1000 / 60,	 lenms / 1000 % 60,	lenms / 10 % 100,	paused ? "Paused " : playing ? "Playing" : "Stopped");
             fflush(stdout);
+	    if(!playing)
+		    exit(0);
         }
 
         Sleep(10);
