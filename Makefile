@@ -4,11 +4,19 @@
 # x64: main.cpp
 # 	g++ -O2 -m64 -o example $< ../../api/lib/libfmodex64.so
 
-x86_c: playstream.c
-	g++ -O2 -m32 -o linux_play $< lib/libfmodex.so
+win:
+	gcc omino.c -o omino.exe
+	gcc menu.c -o menu.exe
 
-x64_c: playstream.c
+lin_x86: playstream.c
+	g++ -O2 -m32 -o linux_play $< lib/libfmodex.so
+	gcc omino.c -o omino
+	gcc menu.c -o menu
+
+lin_x64: playstream.c
 	g++ -O2 -m64 -o linux_play $< lib/libfmodex64.so
+	gcc omino.c -o omino
+	gcc menu.c -o menu
 
 clean:
-	rm -f linux_play
+	rm -f linux_play omino omino.exe menu menu.exe
