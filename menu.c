@@ -2,8 +2,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#if defined __unix__ || defined linux
+	char *cls = "clear";
+#elif defined(_WIN32) || defined(WIN32)
+	char *cls = "cls";
+#endif
+
 void menu(void);
 int bonus(void);
+
+void color();
 
 void quad(int);
 void quad_meta(int);
@@ -19,7 +27,7 @@ void lato(bool tipo){
 	if(tipo){ //rettangolo
 		do {
 			if(wrong)
-				printf("NAN");
+				printf("Non e' un numero");
 			printf("Inserisci la base\t");
 			scanf("%s", &c);
 		}
@@ -27,8 +35,8 @@ void lato(bool tipo){
 		lat=c-48;
 		do {
 			if(wrong)
-				printf("NAN");
-			printf("Inserisci la cazzo di altezza:\t");
+				printf("non e' un numero");
+			printf("Inserisci l'altezza:\t");
 			scanf("%s", &a);
 		}
 		while (a<48 || a>57 && ++wrong);
@@ -37,8 +45,8 @@ void lato(bool tipo){
 	else{ //figure
 		do{
 			if(wrong)
-				printf("NAN");
-			printf("inserisci il porco demonio di lato:\t");
+				printf("non e' un numero");
+			printf("inserisci il lato:\t");
 			scanf("%s", &c);
 		}
 		while(c<48 || c>57 && ++wrong);
@@ -49,6 +57,7 @@ void lato(bool tipo){
 
 int main(){
 	//scritte principali che non verranno mai ripetute
+	system("cls");
 	printf("Salve Utente,\n"
 	"Questo programma permette di creare una figura tra quelle proposte, e di personalizzarla modificandone proporzioni o colore.\n\n");
 	menu();
@@ -85,37 +94,80 @@ void menu(){
 		case '5':lato(0);
 			quad_meta(lat);
 			break;
-		case '6':system("clear");
+		case '6':system(cls);
 			printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
 			bonus();
 			break;
-			
+
 		case '7': printf("\n*Programmatori: Luigi Masini, Federico Negro\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
 			break;
-			
+
 		default: printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni");
 	}
-	printf("\n\n\n");
-// 	system("clear");
+
 	menu();
 }
 
 
 int bonus(){
 	char opzb;
-	printf("Selezionare un opzione: OPZ1 OPZ2 ECC.. MENU BASE3");
+	printf("1)You can't touch this\t2)opzioni colore\t3)torna al menu principale\t0)esci\nSelezionare un opzione: ");
 	scanf("%s",&opzb);
 	switch (opzb){
 		case '0': exit(0);
 		case '1':
+#if defined __unix__ || defined linux
+			system("./omino");
+#elif defined(_WIN32) || defined(WIN32)
+			system("omino.exe");
+#endif
 			break;
 		case '2':
+			color();
 			break;
 		case '3': printf("-nothing strange here");	//torna a menù
 			return 0;
 		default:printf("\ninserire un opzione valida");
 	}
 	bonus();
+}
+//colori
+void color(){
+#if defined __unix__ || defined linux
+	printf("non disponibile per sistemi unix\n\n");
+#elif defined(_WIN32) || defined(WIN32)
+	int wrong=0;
+	char opzc;
+	do {
+			if(wrong)
+				printf("Non e' un numero");
+			printf("\n\nOPZIONI COLORE\n1)nero\t2)blu\t3)verde\n4)turchese\t5)rosso\t6)viola\n7)giallo\t8)bianco\nSelezionare un opzione:\t");
+			scanf("%s", &opzc);
+		}
+		while (opzc<48 || opzc>57 && ++wrong);
+		opzc=opzc-48;
+	switch (opzc){
+		case '1': system("color 08");
+			break;
+		case '2': system("color 18");
+			break;
+		case '3': system("color 20");
+			break;
+		case '4': system("color 38");
+			break;
+		case '5': system("color 40");
+			break;
+		case '6': system("color 57");
+			break;
+		case '7': system("color 60");
+			break;
+		case '8': system("color 70");
+			break;
+		default: printf("selezionare una tra le opzioni di colore esposte");
+			color(opzc);
+			break;
+	}
+#endif
 }
 
 //BEGIN figure
