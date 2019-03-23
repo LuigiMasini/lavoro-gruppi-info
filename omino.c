@@ -231,7 +231,7 @@ int main(){
 		fflush(stdout);
 		printf("%d", (int)cont);
 #endif
-		sleep(step_s/2);
+		Sleep(step_s/2);
 		int i=0;
 		while((int)cont--){
 			system(cls);

@@ -9,12 +9,12 @@ win:
 	gcc menu.c -o menu.exe
 
 lin_x86: playstream.c
-	g++ -O2 -m32 -o linux_play $< lib/libfmodex.so
+	gcc -O2 -m32 -o linux_play $< lib/libfmodex.so
 	gcc omino.c -o omino
 	gcc menu.c -o menu
 
 lin_x64: playstream.c
-	g++ -O2 -m64 -o linux_play $< lib/libfmodex64.so
+	gcc -O2 -m64 -o linux_play $< lib/libfmodex64.so
 	gcc omino.c -o omino
 	gcc menu.c -o menu
 

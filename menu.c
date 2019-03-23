@@ -164,7 +164,7 @@ void color(){
 		case 8: system("color 70");
 			break;
 		default: printf("selezionare una tra le opzioni di colore esposte");
-			color(opzc);
+			color();
 			break;
 	}
 #endif
