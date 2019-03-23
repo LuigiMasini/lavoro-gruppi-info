@@ -145,23 +145,23 @@ void color(){
 			scanf("%s", &opzc);
 		}
 		while (opzc<48 || opzc>57 && ++wrong);
-		opzc=opzc-48;
-	switch (opzc){
-		case '1': system("color 08");
+		wrong=opzc-48;
+	switch (wrong){
+		case 1: system("color 08");
 			break;
-		case '2': system("color 18");
+		case 2: system("color 18");
 			break;
-		case '3': system("color 20");
+		case 3: system("color 20");
 			break;
-		case '4': system("color 38");
+		case 4: system("color 38");
 			break;
-		case '5': system("color 40");
+		case 5: system("color 40");
 			break;
-		case '6': system("color 57");
+		case 6: system("color 57");
 			break;
-		case '7': system("color 60");
+		case 7: system("color 60");
 			break;
-		case '8': system("color 70");
+		case 8: system("color 70");
 			break;
 		default: printf("selezionare una tra le opzioni di colore esposte");
 			color(opzc);
