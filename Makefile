@@ -5,7 +5,7 @@
 # 	g++ -O2 -m64 -o example $< ../../api/lib/libfmodex64.so
 
 win:
-	gcc omino.c -o omino.exe
+	gcc omino.c -o omino.exe -lwinmm
 	gcc menu.c -o menu.exe
 
 lin_x86: playstream.c
