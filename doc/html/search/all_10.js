@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['read',['read',['../struct_f_m_o_d___c_o_d_e_c___d_e_s_c_r_i_p_t_i_o_n.html#ad40b92bf70f3881227760e83aec4dacb',1,'FMOD_CODEC_DESCRIPTION::read()'],['../struct_f_m_o_d___d_s_p___d_e_s_c_r_i_p_t_i_o_n.html#a75f0c778561cc3350a4a7cc0a90b324f',1,'FMOD_DSP_DESCRIPTION::read()']]],
+  ['readdata',['readData',['../class_f_m_o_d_1_1_sound.html#a7cef2f68ccc289fe3d3ad72532ca1d9f',1,'FMOD::Sound']]],
+  ['readfrommixer',['readfrommixer',['../struct_f_m_o_d___o_u_t_p_u_t___s_t_a_t_e.html#ae98e9fcf61226a83642d929cbab494c6',1,'FMOD_OUTPUT_STATE']]],
+  ['record_5fdriver_5farguments',['record_driver_arguments',['../struct_f_m_o_d___l_i_n_u_x___e_x_t_r_a_d_r_i_v_e_r_d_a_t_a.html#ad39ff222b8c2a0bfd36e11aab674642f',1,'FMOD_LINUX_EXTRADRIVERDATA']]],
+  ['recordbuffer',['recordbuffer',['../struct_f_m_o_d___m_e_m_o_r_y___u_s_a_g_e___d_e_t_a_i_l_s.html#aef801f62768fe435004468a04b83b88a',1,'FMOD_MEMORY_USAGE_DETAILS']]],
+  ['recordstart',['recordStart',['../class_f_m_o_d_1_1_system.html#ae241ce558cfc449c8d662203a91e535f',1,'FMOD::System']]],
+  ['recordstop',['recordStop',['../class_f_m_o_d_1_1_system.html#a3c31a5dca654b9226439f1274ca8cf5c',1,'FMOD::System']]],
+  ['reflections',['Reflections',['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#ac8bffc34406a93c809630cd8d0775051',1,'FMOD_REVERB_PROPERTIES']]],
+  ['reflectionsdelay',['ReflectionsDelay',['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#acb3f24ab1f16f6c5d2774c686e52da36',1,'FMOD_REVERB_PROPERTIES']]],
+  ['registercodec',['registerCodec',['../class_f_m_o_d_1_1_system.html#aae95dba844e20b9ea92349156739c9e8',1,'FMOD::System']]],
+  ['registerdsp',['registerDSP',['../class_f_m_o_d_1_1_system.html#a6bf4f3bf0f7c5241809ab3a2e1dce33f',1,'FMOD::System']]],
+  ['release',['release',['../struct_f_m_o_d___d_s_p___d_e_s_c_r_i_p_t_i_o_n.html#ae693dc849dec0e719f94b0261144b5b3',1,'FMOD_DSP_DESCRIPTION::release()'],['../class_f_m_o_d_1_1_system.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::System::release()'],['../class_f_m_o_d_1_1_sound.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::Sound::release()'],['../class_f_m_o_d_1_1_channel_group.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::ChannelGroup::release()'],['../class_f_m_o_d_1_1_sound_group.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::SoundGroup::release()'],['../class_f_m_o_d_1_1_d_s_p.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::DSP::release()'],['../class_f_m_o_d_1_1_geometry.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::Geometry::release()'],['../class_f_m_o_d_1_1_reverb.html#a6076ffabceff5df8b64dfa764919361c',1,'FMOD::Reverb::release()']]],
+  ['remove',['remove',['../class_f_m_o_d_1_1_d_s_p.html#a6dbe68dca59b69fc651e70cf75d64a1f',1,'FMOD::DSP']]],
+  ['reset',['reset',['../struct_f_m_o_d___d_s_p___d_e_s_c_r_i_p_t_i_o_n.html#a4d16f76d892bcccb1d8000478edda1e1',1,'FMOD_DSP_DESCRIPTION::reset()'],['../class_f_m_o_d_1_1_d_s_p.html#a34419eab0cfb8806aab514a362d9a825',1,'FMOD::DSP::reset()']]],
+  ['result',['result',['../struct_f_m_o_d___a_s_y_n_c_r_e_a_d_i_n_f_o.html#a7600e1106317e6c2d5dc91af6a05d148',1,'FMOD_ASYNCREADINFO']]],
+  ['rett',['rett',['../menu_8c.html#aaf06e32c15a84ab575e3575ea1e7ae00',1,'rett(int, int):&#160;menu.c'],['../moduli__figure_8c.html#ac1f96fc12e2ae5a7757b7847213bd91a',1,'rett(int base, int altezza):&#160;moduli_figure.c']]],
+  ['rettangolo_5fvuoto_2ec',['rettangolo_vuoto.c',['../rettangolo__vuoto_8c.html',1,'']]],
+  ['reverb',['Reverb',['../class_f_m_o_d_1_1_reverb.html',1,'FMOD']]],
+  ['reverb',['reverb',['../struct_f_m_o_d___m_e_m_o_r_y___u_s_a_g_e___d_e_t_a_i_l_s.html#a5c5f86e415e72a1fe73857f84b75a081',1,'FMOD_MEMORY_USAGE_DETAILS::reverb()'],['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#a34a875c8a7ef14c91f7e55e3cae38f9f',1,'FMOD_REVERB_PROPERTIES::Reverb()']]],
+  ['reverbchannelprops',['reverbchannelprops',['../struct_f_m_o_d___m_e_m_o_r_y___u_s_a_g_e___d_e_t_a_i_l_s.html#a969cb7ee5a6ffe4a920c6bb4728398f1',1,'FMOD_MEMORY_USAGE_DETAILS']]],
+  ['reverbdef',['reverbdef',['../struct_f_m_o_d___m_e_m_o_r_y___u_s_a_g_e___d_e_t_a_i_l_s.html#adee06e92f6bb7226d1fa0f9d2f65a5cf',1,'FMOD_MEMORY_USAGE_DETAILS']]],
+  ['reverbdelay',['ReverbDelay',['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#a48b69ce78b40b1a64989cf377968db72',1,'FMOD_REVERB_PROPERTIES']]],
+  ['room',['Room',['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#a1df0f5df80521fc802f424db9436b2b6',1,'FMOD_REVERB_PROPERTIES::Room()'],['../struct_f_m_o_d___r_e_v_e_r_b___c_h_a_n_n_e_l_p_r_o_p_e_r_t_i_e_s.html#a1df0f5df80521fc802f424db9436b2b6',1,'FMOD_REVERB_CHANNELPROPERTIES::Room()']]],
+  ['roomhf',['RoomHF',['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#a09b6b09fbfa7881114b60863d787610b',1,'FMOD_REVERB_PROPERTIES']]],
+  ['roomlf',['RoomLF',['../struct_f_m_o_d___r_e_v_e_r_b___p_r_o_p_e_r_t_i_e_s.html#aeb0182979ccf21be93fc497605d96d47',1,'FMOD_REVERB_PROPERTIES']]]
+];
