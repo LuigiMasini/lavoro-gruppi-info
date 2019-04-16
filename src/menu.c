@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#if defined __unix__ || defined linux
+#ifdef LINUX
 	char *cls = "clear";
-#elif defined(_WIN32) || defined(WIN32)
+#elif WIN
 	char *cls = "cls";
 #endif
 
 void menu(void);
-int bonus(void);
+void bonus(bool*);
 
 void color();
 
@@ -31,7 +31,7 @@ void lato(bool tipo){
 			printf("Inserisci la base\t");
 			scanf("%s", &c);
 		}
-		while (c<48 || c>57 && ++wrong);
+		while (( c<48 || c>57 ) && ++wrong);
 		lat=c-48;
 		do {
 			if(wrong)
@@ -39,7 +39,7 @@ void lato(bool tipo){
 			printf("Inserisci l'altezza:\t");
 			scanf("%s", &a);
 		}
-		while (a<48 || a>57 && ++wrong);
+		while ((a<48 || a>57 ) && ++wrong);
 		al=a-48;
 	}
 	else{ //figure
@@ -49,7 +49,7 @@ void lato(bool tipo){
 			printf("inserisci il lato:\t");
 			scanf("%s", &c);
 		}
-		while(c<48 || c>57 && ++wrong);
+		while(( c<48 || c>57 ) && ++wrong);
 		lat=c-48;
 	}
 	printf("\n\n");
@@ -67,85 +67,96 @@ int main(){
 /*TODO
  * voce 7 necessaria?
  * controllo inserimanto numeri in funzione
- * si potrebbe usare enum per le opzioni
- *
  */
 
 void menu(){
-	char opz;
-	printf("Funzioni programma:\n\n"
-	"1)quadrato\t\t2)triangolo equilatero\n3)triangolo rettangolo\t4)rettangolo vuoto\n5)mezzo quadrato\t6)menu bonus\n7)credits\t\t0)uscire\n\n"
-	"Scegli l'opzione:\t");
-	scanf("%s",&opz);
-	switch (opz){
-		case '0': exit(0);//o return, è la stessa cosa in questo caso
-		case '1':lato(0);
-			quad(lat);
-			break;
-		case '2':lato(0);
-			tri_eq(lat);
-			break;
-		case '3':lato(0);
-			tri_ret(lat);
-			break;
-		case '4':lato(1);
-			rett(lat, al);
-			break;
-		case '5':lato(0);
-			quad_meta(lat);
-			break;
-		case '6':system(cls);
-			printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
-			bonus();
-			break;
-
-		case '7': printf("\n*Programmatori: Luigi Masini, Federico Negro\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
-			break;
-
-		default: printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni");
+	while (1){
+		char opz;
+		printf("Funzioni programma:\n\n"
+		"1)quadrato\t\t2)triangolo equilatero\n3)triangolo rettangolo\t4)rettangolo vuoto\n5)mezzo quadrato\t6)menu bonus\n7)credits\t\t0)uscire\n\n"
+		"Scegli l'opzione:\t");
+		scanf("%s",&opz);
+		switch (opz){
+			case '0':
+				exit(0);//o return, è la stessa cosa in questo caso
+			case '1':
+				lato(0);
+				quad(lat);
+				break;
+			case '2':
+				lato(0);
+				tri_eq(lat);
+				break;
+			case '3':
+				lato(0);
+				tri_ret(lat);
+				break;
+			case '4':
+				lato(1);
+				rett(lat, al);
+				break;
+			case '5':
+				lato(0);
+				quad_meta(lat);
+				break;
+			case '6':
+				system(cls);
+				printf("BENVENUTO NEL MENU BONUS: -va bene, tieniti pure i tuoi segreti\n");
+				bool yeah = true;
+				while (yeah)
+					bonus(&yeah);
+				break;
+			case '7':
+				printf("\n*Programmatori: Luigi Masini, Federico Negro\nSuddivisione del lavoro:\nMasini:\nNegro:\nCollab:\n");
+				break;
+			default:
+				printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni");
+		}
 	}
-
-	menu();
 }
 
 
-int bonus(){
-	char opzb;
-	printf("1)You can't touch this\t2)opzioni colore\t3)torna al menu principale\t0)esci\n\nSelezionare un opzione: ");
-	scanf("%s",&opzb);
-	switch (opzb){
-		case '0': exit(0);
-		case '1':
-#if defined __unix__ || defined linux
-			system("./omino");
-#elif defined(_WIN32) || defined(WIN32)
-			system("omino.exe");
+void bonus(bool *yeah){
+	while (yeah){
+		char opzb;
+		printf("1)You can't touch this\t2)opzioni colore\t3)torna al menu principale\t0)esci\n\nSelezionare un opzione: ");
+		scanf("%s",&opzb);
+		switch (opzb){
+			case '0':
+				exit(0);
+			case '1':
+#ifdef LINUX
+				system("./omino");
+#elif WIN
+				system("omino.exe");
 #endif
-			break;
-		case '2':
-			color();
-			break;
-		case '3': printf("-nothing strange here");	//torna a menù
-			return 0;
-		default:printf("\ninserire un opzione valida");
+				continue;
+			case '2':
+				color();
+				system(cls);
+				continue;
+			case '3':
+				printf("-nothing strange here");	//torna a menù
+				yeah = false;
+			default:
+				printf("\ninserire un opzione valida");
+		}
 	}
-	bonus();
 }
 //colori
 void color(){
-// 	printf("non disponibile per sistemi unix\n\n");
 	int wrong=0;
 	char opzc;
 	do {
 			if(wrong)
 				printf("Non e' un numero");
-			printf("\n\nCOLORE SFONDO\n1)nero\t2)blu\t3)verde\t 4)turchese\n5)rosso\t6)viola\t7)giallo 8)bianco\n\nSelezionare un opzione:\t");
+			printf("\n\nCOLORE SFONDO\n1)nero\t2)blu\t3)verde\t 4)turchese\n5)rosso\t6)viola\t7)giallo 8)bianco/grigio\n\nSelezionare un opzione:\t");
 			scanf("%s", &opzc);
 		}
-		while (opzc<48 || opzc>57 && ++wrong);
+		while (( opzc<48 || opzc>57 ) && ++wrong);
 		wrong=opzc-48;
 	switch (wrong){
-#if defined __unix__ || defined linux
+#ifdef LINUX
 		case 1: system("echo -e \"\\e[0m\"");
 			break;
 		case 2: system("echo -e \"\\e[0;44m\"");
@@ -181,7 +192,7 @@ void color(){
      96 106 = Bright Cyan
      97 107 = Bright White
  */
-#elif defined(_WIN32) || defined(WIN32)
+#elif WIN
 		case 1: system("color 08");
 			break;
 		case 2: system("color 18");
@@ -198,7 +209,6 @@ void color(){
 			break;
 		case 8: system("color 70");
 			break;
-#endif
 /*windows prompt colors (bg, fg)
     0 = Black
     1 = Blue
@@ -217,69 +227,10 @@ void color(){
     E = Light Yellow
     F = Bright White
 */
+#endif
 		case 0: exit(0);
 		default: printf("selezionare una tra le opzioni di colore esposte");
 			color();
 			break;
 	}
-	//system(cls);
 }
-
-//BEGIN figure
-
-void quad(int l){
-	for(int i=0; i<l; i++){
-		for(int j=0; j<l; j++)
-			printf("* ");
-		putchar('\n');
-	}
-}
-
-void quad_meta(int l){
-	for(int i=0; i<l; i++){
-		for(int j=i+1;j;j--)
-			printf("* ");
-		for(int j=i; j<l; j++)
-			printf("- ");
-		putchar('\n');
-	}
-}
-
-void rett(int base, int altezza){
-	int c, cont;
-	base-=2;
-	c=altezza;
-	for(;altezza>0;altezza--){
-		printf("* ");
-		cont=base;
-		for(;cont>0;cont--){
-			if(altezza==1||altezza==c)
-				printf("* ");
-			else
-				printf("  ");
-		}
-		printf("*\n");
-	}
-}
-
-
-void tri_eq(int l){
-	for(int i=0; i<l; i++){
-		int j;
-		for(j=i; j<l; j++)
-			printf(" ");
-		for(j=i+1;j;j--)
-			printf("* ");
-		putchar('\n');
-	}
-}
-
-
-void tri_ret(int l){
-	for(int i=0; i<l; i++){
-		for(int j=i+1;j;j--)
-			printf("* ");
-		putchar('\n');
-	}
-}
-//END figure

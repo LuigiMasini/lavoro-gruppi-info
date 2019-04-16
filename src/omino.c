@@ -1,21 +1,19 @@
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#if defined __unix__ || defined linux
+
+#ifdef LINUX
 
 #include <wait.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-#elif defined(_WIN32) || defined(WIN32)
+#elif WIN
 
 #include <windows.h>
-#pragma comment(lib, "winmm.lib")
 
 #endif
 
-
-
-// #define debug
 #define music
 /*
 #if defined _WIN32 || defined WIN32
@@ -23,9 +21,9 @@
 #endif*/
 
 int main(){
-#if defined __unix__ || defined linux
+#ifdef LINUX
 	char *cls = "clear";
-#elif defined _WIN32 || defined WIN32
+#elif WIN
 	char *cls = "cls";
 #endif
 
@@ -228,7 +226,7 @@ int main(){
 	printf("bpm\t\t%d\nduration\t%f\nfpb\t\t%d\nfpm\t\t%d\nstep s\t\t%f\nstep ms\t\t%f\nframe tot\t%f\n\n", bpm, d, fpb, fpm, step_s, step_ms, cont);	//debug
 #endif
 
-#if defined music && ( defined __unix__ || defined linux )
+#if defined music &&  defined LINUX
 	pid_t pid = fork();
 	if ( pid == 0 ){
 		int ret = system("./linux_play cant_touch_this.wav");
@@ -241,7 +239,7 @@ int main(){
 		fflush(stdout);
 		printf("%d", (int)cont);
 #endif
-#if defined(_WIN32) || defined(WIN32)
+#ifdef WIN32
 		PlaySound("cant_touch_this.wav", NULL, SND_ASYNC);
 #endif
 		sleep(step_s/2);
@@ -254,9 +252,9 @@ int main(){
 			printf("%s", omi[i]);
 			//fflush( stdout );
 
-#if defined __unix__ || defined linux
+#ifdef LINUX
 			usleep((int)step_ms);	//in microseconds
-#elif defined(_WIN32) || defined(WIN32)
+#elif WIN
 			Sleep((int)step_s);	//in seconds
 #endif
 
@@ -264,7 +262,7 @@ int main(){
 		}
 
 
-#if defined music && ( defined __unix__ || defined linux )
+#if defined music && defined LINUX
 		int status;
 		waitpid(pid, &status, 0);
 #ifdef debug

@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     FMOD_SOUND       *sound;
     FMOD_CHANNEL     *channel = 0;
     FMOD_RESULT       result;
-    int               key;
+    int               key = 0;
     unsigned int      version;
 
     /*
