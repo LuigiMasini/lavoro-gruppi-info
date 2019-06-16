@@ -38,18 +38,18 @@ endif
 all: $(TARGET)
 
 WIN32:
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu.exe -lwinmm
+	$(CC) $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu.exe -lwinmm
 
 LINUX32:
-	gcc $(FLAGS) -O2 -m32 -o linux_play  $(DIR)playstream.c $(DIR)lib/libfmodex.so
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
+	$(CC) $(FLAGS) -O2 -m32 -o linux_play  $(DIR)playstream.c $(DIR)lib/libfmodex.so
+	$(CC) $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
 
 LINUX64: 
-	gcc $(FLAGS) -O2 -m64 -o linux_play $(DIR)playstream.c $(DIR)lib/libfmodex64.so
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
+	$(CC) $(FLAGS) -O2 -m64 -o linux_play $(DIR)playstream.c $(DIR)lib/libfmodex64.so
+	$(CC) $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
 
 OSX:
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
+	$(CC) $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
 
 clean:
 	rm -f linux_play omino omino.exe menu menu.exe
