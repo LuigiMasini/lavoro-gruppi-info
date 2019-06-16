@@ -2,26 +2,18 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#ifdef LINUX
-
-#include <wait.h>
-#include <sys/types.h>
-#include <unistd.h>
-
+#if defined LINUX || defined OSX
+	#include <wait.h>
+	#include <sys/types.h>
+	#include <unistd.h>
 #elif WIN
-
-#include <windows.h>
-
+	#include <windows.h>
 #endif
 
 #define music
-/*
-#if defined _WIN32 || defined WIN32
-#undef music
-#endif*/
 
-int main(){
-#ifdef LINUX
+void omino(){
+#if defined LINUX || defined OSX
 	char *cls = "clear";
 #elif WIN
 	char *cls = "cls";
@@ -222,60 +214,64 @@ int main(){
 	double cont = d;
 	cont/=step_s;
 
-#ifdef debug
+	#ifdef debug
 	printf("bpm\t\t%d\nduration\t%f\nfpb\t\t%d\nfpm\t\t%d\nstep s\t\t%f\nstep ms\t\t%f\nframe tot\t%f\n\n", bpm, d, fpb, fpm, step_s, step_ms, cont);	//debug
-#endif
+	#endif
 
-#if defined music &&  defined LINUX
+	#if defined music && ( defined LINUX || defined OSX )
 	pid_t pid = fork();
 	if ( pid == 0 ){
+		#if defined OSX
+		int ret = system("afplay cant_touch_this.wav");
+		#elif LINUX
 		int ret = system("./linux_play cant_touch_this.wav");
+		#endif
 		exit(WEXITSTATUS(ret));
 	}
 	else {
-#endif
+	#endif
 
-#ifdef debug
+		#ifdef debug
 		fflush(stdout);
 		printf("%d", (int)cont);
-#endif
-#ifdef WIN32
+		#endif
+		#ifdef WIN
 		PlaySound("cant_touch_this.wav", NULL, SND_ASYNC);
-#endif
+		#endif
 		sleep(step_s/2);
 		int i=0;
 		while((int)cont--){
 			system(cls);
-#ifdef debug
+			#ifdef debug
 			printf("%d %d\n", i, (int)cont);
-#endif
+			#endif
 			printf("%s", omi[i]);
 			//fflush( stdout );
 
-#ifdef LINUX
+			#if defined LINUX || defined OSX
 			usleep((int)step_ms);	//in microseconds
-#elif WIN
+			#elif WIN
 			Sleep((int)step_s);	//in seconds
-#endif
+			#endif
 
 			i==15 ? i=0: i++ ;
 		}
 
 
-#if defined music && defined LINUX
+	#if defined music && defined LINUX || OSX
 		int status;
 		waitpid(pid, &status, 0);
-#ifdef debug
+		#ifdef debug
 		printf("Exit status of the child was %d\n", WEXITSTATUS(status));
-#endif
+		#endif
 	}
-#endif
+	#endif
 
 }
 
 /*TODO:
- m o*lto inefficente con array tridimensionali, meglio perndere sigoli frame da un file dedicato
+ molto inefficente con array tridimensionali, meglio prendere sigoli frame da un file dedicato
 -aggiungere musica e adattare tempo
- aggiungere colori
+-aggiungere colori
  aggiungere compilazione sbs step by step per controllo fotogrammi uno ad uno
  */

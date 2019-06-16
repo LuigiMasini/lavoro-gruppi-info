@@ -30,6 +30,7 @@ else
 	endif
 	ifeq ($(UNAME_S),Darwin)
 		TARGET =OSX
+		FLAGS += -D OSX
 	endif
 endif
 
@@ -37,18 +38,18 @@ endif
 all: $(TARGET)
 
 WIN32:
-	gcc $(FLAGS) $(DIR)omino.c -o omino.exe -lwinmm
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c -o menu.exe
+	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu.exe -lwinmm
 
-LINUX32: $(DIR)playstream.c
-	gcc $(FLAGS) -O2 -m32 -o linux_play $< libfmodex.so
-	gcc $(FLAGS) $(DIR)omino.c -o omino
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c -o menu
+LINUX32:
+	gcc $(FLAGS) -O2 -m32 -o linux_play  $(DIR)playstream.c $(DIR)lib/libfmodex.so
+	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
 
 LINUX64: 
 	gcc $(FLAGS) -O2 -m64 -o linux_play $(DIR)playstream.c $(DIR)lib/libfmodex64.so
-	gcc $(FLAGS) $(DIR)omino.c -o omino
-	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c -o menu
+	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
+
+OSX:
+	gcc $(FLAGS) $(DIR)menu.c $(DIR)figure.c $(DIR)omino.c -o menu
 
 clean:
 	rm -f linux_play omino omino.exe menu menu.exe

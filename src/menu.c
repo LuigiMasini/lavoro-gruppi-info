@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#ifdef LINUX
+#if defined LINUX || defined OSX
 	char *cls = "clear";
 #elif WIN
 	char *cls = "cls";
@@ -19,38 +19,41 @@ void rett(int, int);
 void tri_eq(int);
 void tri_ret(int);
 
+void omino();
+
 int lat, al;
 
-void lato(bool tipo){
+void lato(bool tipo){	//FIXED
 	int wrong=0;
-	char c, a;
+	char c;
 	if(tipo){ //rettangolo
 		do {
 			if(wrong)
-				printf("Non e' un numero");
+				printf("Non e' un numero!\n");
 			printf("Inserisci la base\t");
 			scanf("%s", &c);
+			lat=atoi(&c);
 		}
 		while (( c<48 || c>57 ) && ++wrong);
-		lat=c-48;
+		wrong=0;
 		do {
 			if(wrong)
-				printf("non e' un numero");
+				printf("non e' un numero!\n");
 			printf("Inserisci l'altezza:\t");
-			scanf("%s", &a);
+			scanf("%s", &c);
+			al=atoi(&c);
 		}
-		while ((a<48 || a>57 ) && ++wrong);
-		al=a-48;
+		while ((c<48 || c>57 ) && ++wrong);
 	}
 	else{ //figure
 		do{
 			if(wrong)
-				printf("non e' un numero");
+				printf("non e' un numero!\n");
 			printf("inserisci il lato:\t");
 			scanf("%s", &c);
+			lat=atoi(&c);
 		}
 		while(( c<48 || c>57 ) && ++wrong);
-		lat=c-48;
 	}
 	printf("\n\n");
 }
@@ -78,7 +81,12 @@ void menu(){
 		scanf("%s",&opz);
 		switch (opz){
 			case '0':
-				exit(0);//o return, è la stessa cosa in questo caso
+				#if defined LINUX || defined OSX
+					system("echo -e \"\\e[0m\"");
+				#elif WIN
+					system("color 0f");
+				#endif
+				exit(0);
 			case '1':
 				lato(0);
 				quad(lat);
@@ -112,6 +120,7 @@ void menu(){
 			default:
 				printf("Si prega di inserire uno dei numeri corrispondenti alle differenti opzioni");
 		}
+		printf("\n\n");
 	}
 }
 
@@ -123,13 +132,20 @@ void bonus(bool *yeah){
 		scanf("%s",&opzb);
 		switch (opzb){
 			case '0':
+				#if defined LINUX || defined OSX
+				system("echo -e \"\\e[0m\"");
+				#elif WIN
+				system("color 0f");
+				#endif
 				exit(0);
-			case '1':
-#ifdef LINUX
+			case '1': omino();
+				/*
+#if defined LINUX || defined OSX
 				system("./omino");
 #elif WIN
 				system("omino.exe");
 #endif
+*/
 				continue;
 			case '2':
 				color();
@@ -156,7 +172,7 @@ void color(){
 		while (( opzc<48 || opzc>57 ) && ++wrong);
 		wrong=opzc-48;
 	switch (wrong){
-#ifdef LINUX
+#if defined LINUX || defined OSX
 		case 1: system("echo -e \"\\e[0m\"");
 			break;
 		case 2: system("echo -e \"\\e[0;44m\"");
